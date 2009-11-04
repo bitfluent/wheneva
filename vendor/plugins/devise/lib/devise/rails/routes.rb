@@ -63,17 +63,18 @@ module ActionController::Routing
         options = resources.extract_options!
 
         resources.map!(&:to_sym)
-        options.assert_valid_keys(:class_name, :as, :path_names, :singular)
+        options.assert_valid_keys(:class_name, :as, :path_names, :singular, :conditions)
 
         resources.each do |resource|
           mapping = Devise::Mapping.new(resource, options)
           Devise.mappings[mapping.name] = mapping
+          conditions = options[:conditions] || {}
 
           if mapping.authenticatable?
             with_options(:controller => 'sessions', :path_prefix => mapping.as) do |session|
-              session.send(:"new_#{mapping.name}_session",     mapping.path_names[:sign_in],  :action => 'new',     :conditions => { :method => :get })
-              session.send(:"#{mapping.name}_session",         mapping.path_names[:sign_in],  :action => 'create',  :conditions => { :method => :post })
-              session.send(:"destroy_#{mapping.name}_session", mapping.path_names[:sign_out], :action => 'destroy', :conditions => { :method => :get })
+              session.send(:"new_#{mapping.name}_session",     mapping.path_names[:sign_in],  :action => 'new',     :conditions => conditions.merge(:method => :get))
+              session.send(:"#{mapping.name}_session",         mapping.path_names[:sign_in],  :action => 'create',  :conditions => conditions.merge(:method => :post))
+              session.send(:"destroy_#{mapping.name}_session", mapping.path_names[:sign_out], :action => 'destroy', :conditions => conditions.merge(:method => :get))
             end
           end
 
