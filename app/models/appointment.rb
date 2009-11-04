@@ -62,14 +62,14 @@ class Appointment < ActiveRecord::Base
     ts             = TimeSlot.new
     dates          = Appointment.confirmed.later_than_the_earliest_slot_today.collect { |a| a.confirmed_date }
     slots          = ts.populate(dates)
-    earliest       = Time.zone.today + 9.hours
+    earliest       = Time.zone.today + 1.day + 9.hours
     earliest_slots = []
 
     slots.each_with_index do |slot, i|
       day = earliest + i.days
       slot.each_with_index do |s, j|
         day_hour = day + j.hours
-        if day_hour <= Time.zone.now # reject earlier empty slots
+        if day_hour <= Time.zone.now + 1.day # reject earlier empty slots
           next
         elsif s.nil?
           earliest_slots << day_hour

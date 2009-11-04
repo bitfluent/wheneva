@@ -29,8 +29,9 @@
                     <small>Click on the date to select</small>
                     <div id="date_picker">
                     <ul>
-                      <li><a href="#" class="selected png_bg">Thursday at 9am</a></li>
-                      <li><a href="#">Friday at 10am</a></li>
+                      <% Appointment.open_time_slots.each_with_index do |slot, i| %>
+                        <li><a href="#" class="<%= "selected" if i == 0 %> png_bg"><%= slot.to_s(:slot) %></a></li>
+                      <% end %>
                     </ul>
                     <small class="clearfix"><a href="" class="right">Next Week</a><a href="" class="left">Previous Week</a></small>
                     </div>

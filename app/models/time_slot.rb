@@ -1,7 +1,7 @@
 class TimeSlot
   attr_reader :num_of_days, :first_slot, :last_slot
 
-  def initialize(num_of_days = 7, first_slot = 9, last_slot = 17)
+  def initialize(num_of_days = 7, first_slot = 9, last_slot = 18)
     @num_of_days = num_of_days
     @first_slot  = first_slot
     @last_slot   = last_slot
@@ -19,7 +19,7 @@ class TimeSlot
   end
 
   def earliest_slot
-    @earliest_slot ||= Time.zone.today + first_slot.hours
+    @earliest_slot ||= Time.zone.today + 1.day + first_slot.hours
   end
 
   def day_index(date)
