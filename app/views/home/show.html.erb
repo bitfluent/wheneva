@@ -1,2 +1,36 @@
 <% title "Home" %>
-<%= link_to "Create your own account", new_account_path %>
+<div class="logo clearfix">
+  <ul class="right">
+    <li><a href="#">Demo</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <a href="#" title="Meet Me"><img src="/images/logo.png" alt="Meet Me" class="png_bg" /></a>
+
+</div>
+
+<div id="slider">
+  <div class="slider_bg">
+    <div class="holder">
+      <div>
+      <img src="/images/slide_1.png" alt="About Meet Me" />
+      <h2>Meetme helps you manage your appointments</h2>
+      </div>
+
+      <div>
+      <img src="/images/slide_2.png" alt="About Meet Me" />
+      <h2>Request a meeting in 2 simple steps</h2>
+      </div>
+
+      <div>
+      <img src="/images/slide_3.png" alt="About Meet Me" />
+      <h2>Delegate meetings &amp; scheduling easily</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="register">
+  <%= link_to image_tag("registration.png", :class => "png_bg", :alt => "register for free"), new_account_path %>
+  <h3>Sign up and have your very own appointment system</h3>
+</div>
+<div class="break_2"></div>

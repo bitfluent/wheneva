@@ -18,6 +18,7 @@ $(document).ready(function() {
   });
 
   $("em.url").hide();
+  $('.holder').cycle();
 
 	// On admin appointment show
 	$(".appointment_cancelled").click(function() {
