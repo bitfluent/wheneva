@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091104180942) do
+ActiveRecord::Schema.define(:version => 20091104183911) do
 
   create_table "accounts", :force => true do |t|
     t.string   "title",        :null => false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20091104180942) do
     t.datetime "updated_at"
     t.string   "venue"
     t.integer  "account_id"
+    t.boolean  "conflicted",     :default => false
   end
 
   create_table "users", :force => true do |t|

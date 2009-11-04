@@ -1,5 +1,6 @@
 class Appointment < ActiveRecord::Base
   before_save :parse_date
+  after_save :set_conflict, :if => Proc.new {|a| !a.confirmed_date.nil? }, :unless => Proc.new {|a| a.conflicted? }
   named_scope :between, lambda { |start, finish| { :conditions => ["confirmed_date >= ? AND confirmed_date <= ?", start, finish] } }
   named_scope :not_confirm, :conditions => {:confirmed_date => nil}
   named_scope :not_cancelled, :conditions => {:cancelled => false}
@@ -43,7 +44,7 @@ class Appointment < ActiveRecord::Base
   
   def self.weekly_appointments(week)
     date = (Time.zone.today.cweek - week).week.from_now
-    between(date.beginning_of_week, date.end_of_week).all(:order => 'confirmed_date ASC')
+    between(date.beginning_of_week, date.end_of_week).not_cancelled.not_rejected.all(:order => 'confirmed_date ASC')
   end
   
   def self.pendings
@@ -54,5 +55,11 @@ protected
   def parse_date
     return unless self.requested_date_chronic
     self.requested_date = Chronic.parse(self.requested_date_chronic)
+  end
+  
+  def set_conflict
+    Appointment.all(:conditions => ["requested_date = ? AND account_id = ? ", self.confirmed_date, self.account_id]).each do |appointment|
+      appointment.update_attribute('conflicted', true) if appointment.state == :unconfirmed
+    end
   end
 end
