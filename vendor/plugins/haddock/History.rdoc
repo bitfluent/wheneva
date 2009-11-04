@@ -1,0 +1,36 @@
+=== 0.2.1 / 2009-05-14
+
+* 1 major, minor enhancement
+
+  * Ruby 1.9 compatibility.
+
+
+
+=== 0.2.0 / 2009-03-29
+
+* 1 major enhancement
+
+  * Changed "haddock" to "ha-gen" for Haskell compliance.
+
+
+=== 0.1.1 / 2009-03-29
+
+* 2 minor enhancements
+
+  * Add version option to command-line utility.
+  * Bumping up version numbers to improve credibility.
+
+
+=== 0.1.0 / 2009-03-29
+
+* 2 minor enhancements
+
+  * Friendlier command-line errors.
+  * General cleanup.
+
+
+=== 0.0.1 / 2009-03-28
+
+* 1 major enhancement
+
+  * Birthday!
