@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091104162926) do
+ActiveRecord::Schema.define(:version => 20091104163555) do
 
   create_table "accounts", :force => true do |t|
     t.string   "title",      :null => false
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20091104162926) do
     t.integer  "user_id",    :null => false
     t.string   "tagline"
   end
+
+  add_index "accounts", ["subdomain"], :name => "index_accounts_on_subdomain", :unique => true
 
   create_table "appointments", :force => true do |t|
     t.string   "name"
