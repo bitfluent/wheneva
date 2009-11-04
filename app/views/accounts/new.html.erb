@@ -4,7 +4,7 @@
   <div class="container_content clearfix">
     <div class="inner clearfix">
       <% semantic_form_for @account, :html => { :multipart => true } do |f| %>
-        <% f.inputs do %>
+        <% f.inputs :class => "inputs register" do %>
           <%= f.input :title, :label => "Name" %>
           <%= f.input :tagline %>
           <%= f.input :subdomain, :label => "URL" %>
