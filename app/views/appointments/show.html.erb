@@ -1,0 +1,21 @@
+<div id="confirmation" class="container clearfix">
+	<div class="container_heading"><a href="#" id="bookmark" class="png_bg right">Boookmark this page</a><h2>Hello, Kailoon!</h2></div>
+	<div class="container_content clearfix">
+		<div class="inner clearfix">
+			<h4>Your meeting with Dato' Abu Bakar is <a href="" class="<%= @appointment.state %>"><%= @appointment.state %></a></h4>
+			<div class="app_details clearfix">
+       	<h5>Details</h5>
+				<div class="app_form clearfix">
+					<p><strong>Date</strong><span class="date_confirm"><%= @appointment.appointment_date.to_s(:appointment_date) %></span></p>
+					<p><strong>Time</strong><span><%= @appointment.appointment_date.to_formatted_s(:appointment_time) %></span></p>
+					<% unless @appointment.venue.nil? %>
+						<p><strong>Venue</strong><span>Dato' Abu Bakar Office</span></p>
+					<% end %>
+					<p><strong>Brief</strong><span><%= @appointment.brief %></span></p>
+				</div>
+       </div>
+       <p class="align_right"><a href="" class="cancel action">Cancel this meeting</a></p>
+   	</div>
+	</div>
+	<div class="container_bottom"></div>
+</div>
