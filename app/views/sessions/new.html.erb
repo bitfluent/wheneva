@@ -1,0 +1,18 @@
+<div class="container_heading">
+<h2>Sign in</h2>
+</div>
+
+<div class="container_content">
+  <div class="inner">
+  <% form_for resource_name, resource, :url => session_path(resource_name) do |f| -%>
+    <%= f.label :email %><br />
+    <p><%= f.text_field :email %></p>
+
+    <%= f.label :password %><br />
+    <p><%= f.password_field :password %></p>
+
+    <p><%= f.submit "&nbsp;", :id => "login" %></p>
+  <% end -%>
+  </div>
+</div>
+<div class="container_bottom"></div>

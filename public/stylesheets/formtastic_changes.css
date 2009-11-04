@@ -13,6 +13,7 @@ fieldset.inputs { }
 form.formtastic fieldset ol li { float: left; width: 300px; margin-bottom: 5px; }
 form.formtastic fieldset ol li label { float: left; width: 60px; display: inline; }
 form.formtastic fieldset ol li input { float: left; width: 230px; padding: 4px; }
+input.checkbox { float: left; width: auto; padding: 4px; }
 form.formtastic fieldset ol li textarea { float: left; width: 230px; padding: 4px; height: 120px; }
 form.formtastic fieldset.buttons li, form.formtastic fieldset ol li input#submit { float: none;}
 form.formtastic fieldset.buttons { padding: 0; }
