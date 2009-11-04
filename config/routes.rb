@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # top-level urls - http://meet.me/accounts/new
   map.with_options :conditions => { :subdomain => false } do |meetme|
-    meetme.resources :accounts
+    meetme.resources :accounts, :collection => { :check => :get }
     meetme.root :controller => "home", :action => "show"
   end
 end

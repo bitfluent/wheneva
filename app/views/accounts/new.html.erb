@@ -7,7 +7,9 @@
         <% f.inputs :class => "register" do %>
           <%= f.input :title, :label => "Name" %>
           <%= f.input :tagline %>
-          <%= f.input :subdomain, :label => "URL" %>
+          <li class="string required subdomain" id="account_subdomain_input">
+            <label for="account_subdomain">URL<abbr title="required">*</abbr></label><em class="url avail png_bg">Available</em><em class="url check png_bg">Checking</em><em class="url taken png_bg">Taken</em>http://<%= f.text_field :subdomain, :class => "short" %>.meet.me
+          </li>
           <% f.semantic_fields_for :user_attributes do |u| %>
             <%= u.inputs :email %>
             <%= u.inputs :password, :as => :password %>

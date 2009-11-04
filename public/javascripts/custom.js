@@ -17,6 +17,8 @@ $(document).ready(function() {
     return false;
   });
 
+  $("em.url").hide();
+
 	// On admin appointment show
 	$(".appointment_cancelled").click(function() {
 		$("#appointment_cancelled").val('true');
@@ -58,4 +60,24 @@ $(document).ready(function() {
 
 	});
 	
+	$("#account_subdomain").blur(function() {
+	  $("em.url").hide();
+	  if ($(this).val() == "") {
+	    return;
+	  }
+	  $("em.check").show();
+	  $.ajax({
+	    url: "/accounts/check",
+	    data: { "subdomain": $(this).val() },
+	    dataType: "json",
+	    success: function(data) {
+	      $("em.check").hide();
+	      if (data.taken) {
+	        $("em.taken").show();
+	      } else {
+	        $("em.avail").show();
+	      }
+      }
+	  });
+	});
 });
