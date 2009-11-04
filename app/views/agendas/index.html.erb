@@ -1,0 +1,32 @@
+<div class="container_heading">
+  <h2>Agenda</h2>
+</div>
+<div class="container_content">
+	<% @agendas.each do |key, appointments| %>
+  <div class="app_boss">
+    <div class="app_list_boss">
+      <h4><span class="right"><%= appointments.first.appointment_date.to_formatted_s(:appointment_date_short) %></span><%= appointments.first.appointment_date.strftime('%A') %></h4>
+      <ul class="clearfix">
+			<% appointments.each do |appointment| %>
+        <li>
+          <div class="app_left">
+            <h3 class="time"><%= appointment.appointment_date.to_formatted_s(:appointment_time) %></h3>
+						<% unless appointment.venue.nil? %>						
+            <span class="venue"><%= appointment.venue %></span>
+						<% end %>
+          </div>
+          <div class="app_desc">
+            <h3 class="visitor"><%= appointment %></h3>
+            <p><%= appointment.brief %></p>
+          </div>
+          <div class="app_visitor">
+            
+          </div>
+        </li>
+			<% end %>
+      </ul>
+    </div>
+  </div>
+  <% end %> 
+</div>
+<div class="container_bottom"></div>

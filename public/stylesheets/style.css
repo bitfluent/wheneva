@@ -159,3 +159,18 @@ fieldset ol { padding: 0; margin: 0; list-style: none; }
 .slider_bg img { float: right; display: inline; margin: 29px 33px 0 0; }
 .register h3 { font-size: 24px; padding: 15px 0 0 0; }
  a img { border: 0; float: right; }
+
+/*BOSS*/
+.app_boss { display: block; width: 100%; }
+.app_list_boss { padding: 15px 30px 15px 15px;; }
+.app_list_boss h4 { border-bottom: 3px solid #f1f1f1; }
+.app_boss ul { list-style: none; border-top: 1px solid #ccc; background: url(/images/break.png) no-repeat bottom left; padding-bottom: 20px; }
+.app_boss ul li { padding: 5px 0; border-top: 1px solid #f5f5f5; float: left; width: 100%; }
+.app_boss ul li .app_left { float: left; width: 120px; }
+.app_boss ul li h5, .app_boss ul li h3, .app_boss ul li span { padding: 3px 0 3px 22px; color: #666; display: block; line-height: 14px; margin-bottom: 5px; }
+.app_boss ul li h3 { font-size: 20px; }
+.app_boss ul li .visitor { background: url(/images/user-silhouette.png) no-repeat 0 2px; }
+.app_boss ul li .venue {background: url(/images/sofa.png) no-repeat 0 2px; }
+.app_boss ul li .time { background: url(/images/clock-frame.png) no-repeat 0 4px; }
+.app_boss ul li .app_desc { float: left; width: 645px; }
+.app_boss ul li .app_desc p { }

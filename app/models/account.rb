@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
   has_many :appointments
+  has_many :agendas, :class_name => "Appointment"
   belongs_to :user
   belongs_to :assistant, :class_name => "User"
   accepts_nested_attributes_for :user
