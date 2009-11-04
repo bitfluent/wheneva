@@ -4,7 +4,7 @@ class AppointmentMailer < ActionMailer::Base
   
   def mail(appointment)
     @recipients  = "#{appointment.email}"
-    @from        = '"appointment.account.title" <no-reply@meet.me>'
+    @from        = '"Support" <meet@jomcode.com>'
     @subject     = "[Meet.me] "
     @sent_on     = Time.now
     @body[:appointment] = appointment
