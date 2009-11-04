@@ -1,5 +1,6 @@
+<% title @appointment.page_title %>
 <div id="confirmation" class="container clearfix">
-	<div class="container_heading"><a href="#" id="bookmark" class="png_bg right jqbookmark">Boookmark this page</a><h2>Hello, Kailoon!</h2></div>
+	<div class="container_heading"><a href="#" id="bookmark" class="png_bg right jqbookmark">Boookmark this page</a><h2><%= "Hello, #{@appointment.name}!" %></h2></div>
 	<div class="container_content clearfix">
 		<div class="inner clearfix">
 			<h4>Your meeting with Dato' Abu Bakar is <a href="" class="<%= @appointment.state %>"><%= @appointment.state %></a></h4>

@@ -29,6 +29,10 @@ class Appointment < ActiveRecord::Base
     @requested_date_chronic = requested_date
   end
   
+  def page_title
+    "#{self.name} has a meeting at #{self.appointment_date.to_s(:appointment_date)}"
+  end
+  
 protected
   def parse_date
     return unless self.requested_date_chronic
