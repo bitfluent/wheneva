@@ -1,6 +1,7 @@
 class Appointment < ActiveRecord::Base
   belongs_to :account
-  before_save :parse_date
+  before_save :parse_requested_date
+  before_save :parse_confirmed_date
   after_save :set_conflict, :if => Proc.new {|a| !a.confirmed_date.nil? }, :unless => Proc.new {|a| a.conflicted? }
   after_save :send_mail, :unless => Proc.new {|a| a.conflicted? }
   named_scope :between, lambda { |start, finish| { :conditions => ["confirmed_date >= ? AND confirmed_date <= ?", start, finish] } }
@@ -35,6 +36,14 @@ class Appointment < ActiveRecord::Base
   
   def appointment_date
     self.confirmed_date || self.requested_date
+  end
+
+  def confirmed_date_chronic
+    @confirmed_date_chronic
+  end
+  
+  def confirmed_date_chronic=(confirmed_date)
+    @confirmed_date_chronic = confirmed_date
   end
 
   def requested_date_chronic
@@ -81,9 +90,14 @@ class Appointment < ActiveRecord::Base
   end
 
 protected
-  def parse_date
+  def parse_requested_date
     return unless self.requested_date_chronic
     self.requested_date = Chronic.parse(self.requested_date_chronic)
+  end
+  
+  def parse_confirmed_date
+    return unless self.confirmed_date_chronic
+    self.confirmed_date = Chronic.parse(self.confirmed_date_chronic)
   end
   
   def set_conflict

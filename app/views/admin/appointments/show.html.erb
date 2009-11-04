@@ -8,6 +8,7 @@
 			<%= f.hidden_field :confirmed_date %>
 			<%= f.hidden_field :requested_date %>
 			<%= f.hidden_field :rejected %>						
+			<%= f.hidden_field :confirmed_date_chronic %>						
 			<div class="app_details clearfix">
        	<h5>Details</h5>
 				<div class="app_form clearfix">
@@ -19,20 +20,24 @@
 					<p><strong>Brief</strong><span><%= @appointment.brief %></span></p>
 					<p><strong>Venue</strong><span><%= f.text_field :venue %></span></p>
 				</div>
+				<% if (@appointment.state == :unconfirmed )%>
+					<h4>Pick a date &amp; time to rescheduled</h4>
+					<%= render :partial => "shared/date_picker" %>
+				<% end %>
 			</div>
-			<% if (@appointment.state == (:confirmed || :rescheduled) )%>
+			<% if ((@appointment.state == :confirmed) || (@appointment.state == :rescheduled) )%>
 				<p class="align_right">
-					<a href="" class="cancel action appointment_cancelled">Cancel this meeting</a>
+					<a href="#" class="cancel action appointment_cancelled">Cancel this meeting</a>
 				</p>
 			<% elsif (@appointment.state == :unconfirmed )%>
 				<p class="align_right">
-					<a href="" class="cancel action appointment_confirmed_date">Confirm</a>
+					<a href="#" class="cancel action appointment_confirmed_date">Confirm</a>
 				</p>
 				<p class="align_right">
-					<a href="http://google.com" class="cancel action nosubmit">Reschedule</a>
+					<a href="#" class="cancel action">Reschedule</a>
 				</p>			
 				<p class="align_right">
-					<a href="" class="cancel action appointment_rejected">Reject</a>
+					<a href="#" class="cancel action appointment_rejected">Reject</a>
 				</p>
 				<% end %>
 			<% end %>				
