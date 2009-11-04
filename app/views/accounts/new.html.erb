@@ -6,8 +6,10 @@
         <% f.inputs do %>
           <%= f.input :title %>
           <%= f.input :subdomain, :label => "URL" %>
-          <%#= f.input :email %>
-          <%#= f.input :password %>
+          <% f.semantic_fields_for :user_attributes do |u| %>
+            <%= u.inputs :email %>
+            <%= u.inputs :password, :as => :password %>
+          <% end %>
           <!-- <li><label>Logo</label><input type="file" name="logo" name="logo" /></li>
           <li><label>Assistant / Manager Email<abbr>*</abbr></label><input type="password" name="email2" name="email2" /></li> -->
         <% end %>
