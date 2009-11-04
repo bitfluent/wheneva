@@ -16,11 +16,24 @@ $(document).ready(function() {
     $(this).addClass("selected");
     return false;
   });
+
+	// On admin appointment show
+	$(".appointment_cancelled").click(function() {
+		$("#appointment_cancelled").val('true');
+	});
+	$(".appointment_rejected").click(function() {
+		$("#appointment_rejected").val('true');
+	});
+	$(".appointment_confirmed_date").click(function() {
+		$("#appointment_confirmed_date").val($("#appointment_requested_date").val());
+	});
 	
-	$(".action").click(function() {
+	// Generic link submit (.action)
+	$(".action").not('.nosubmit').click(function() {
 		$(this).parents('form').submit();
 	});
 	
+	// For bookmarking feature
 	if(window.opera) {
 	    if ($("a.jqbookmark").attr("rel") != ""){ // don't overwrite the rel attrib if already set
 	        $("a.jqbookmark").attr("rel","sidebar");

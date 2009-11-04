@@ -1,13 +1,13 @@
 <% title @appointment.page_title %>
 <div id="confirmation" class="container clearfix">
-	<div class="container_heading"><h2><%= "Meeting with #{@appointment.name}" %></h2></div>
+	<div class="container_heading"><h2><%= "Meeting with #{@appointment.name}" %> is  <a href="" class="<%= @appointment.state %>"><%= @appointment.state %></a></h2></div>
 	<div class="container_content clearfix">
 		<div class="inner clearfix">
 		<% form_for @appointment, :url => admin_appointment_path(@appointment) do |f| %>
 			<%= f.hidden_field :cancelled %>
 			<%= f.hidden_field :confirmed_date %>
+			<%= f.hidden_field :requested_date %>
 			<%= f.hidden_field :rejected %>						
-			<h4>Meeting is <a href="" class="<%= @appointment.state %>"><%= @appointment.state %></a></h4>
 			<div class="app_details clearfix">
        	<h5>Details</h5>
 				<div class="app_form clearfix">
@@ -22,17 +22,17 @@
 			</div>
 			<% if (@appointment.state == (:confirmed || :rescheduled) )%>
 				<p class="align_right">
-					<a href="" class="cancel action">Cancel this meeting</a>
+					<a href="" class="cancel action appointment_cancelled">Cancel this meeting</a>
 				</p>
 			<% elsif (@appointment.state == :unconfirmed )%>
 				<p class="align_right">
-					<a href="" class="cancel action">Confirm</a>
+					<a href="" class="cancel action appointment_confirmed_date">Confirm</a>
 				</p>
 				<p class="align_right">
-					<a href="" class="cancel action">Reschedule</a>
+					<a href="http://google.com" class="cancel action nosubmit">Reschedule</a>
 				</p>			
 				<p class="align_right">
-					<a href="" class="cancel action">Reject</a>
+					<a href="" class="cancel action appointment_rejected">Reject</a>
 				</p>
 				<% end %>
 			<% end %>				
