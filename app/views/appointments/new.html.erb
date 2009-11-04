@@ -3,7 +3,7 @@
     <div class="container_top"></div>
         <div class="container_content clearfix">
           <div class="inner clearfix">
-            <img src="/images/meetme_07.png" alt="Dato' Abu Bakar" class="left" />
+            <%= image_tag current_account.logo.url, :class => "left", :alt => current_account.title %>
           <div class="info">
               <h1><%= current_account %></h1>
                 <p><%= current_account.tagline %></p>
