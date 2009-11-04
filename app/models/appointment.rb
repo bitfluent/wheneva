@@ -6,8 +6,13 @@ class Appointment < ActiveRecord::Base
   named_scope :between, lambda { |start, finish| { :conditions => ["confirmed_date >= ? AND confirmed_date <= ?", start, finish] } }
   named_scope :not_confirm, :conditions => {:confirmed_date => nil}
   named_scope :not_cancelled, :conditions => {:cancelled => false}
-  named_scope :not_rejected, :conditions => {:rejected => false}  
-  
+  named_scope :not_rejected, :conditions => {:rejected => false}
+  named_scope :confirmed, :conditions => ["confirmed_date is not null"]
+  named_scope :later_than_the_earliest_slot_today, lambda { {:conditions => ["confirmed_date >= ?", Time.zone.today + 9.hours]} }
+
+  EARLIEST_SLOT = 9 # 9am
+  LATEST_SLOT = 17  # 5pm
+
   def to_s
     name
   end
@@ -52,7 +57,29 @@ class Appointment < ActiveRecord::Base
   def self.pendings
     not_confirm.not_cancelled.not_rejected
   end
-  
+
+  def self.open_time_slots
+    ts             = TimeSlot.new
+    dates          = Appointment.confirmed.later_than_the_earliest_slot_today.collect { |a| a.confirmed_date }
+    slots          = ts.populate(dates)
+    earliest       = Time.zone.today + 9.hours
+    earliest_slots = []
+
+    slots.each_with_index do |slot, i|
+      day = earliest + i.days
+      slot.each_with_index do |s, j|
+        day_hour = day + j.hours
+        if day_hour <= Time.zone.now # reject earlier empty slots
+          next
+        elsif s.nil?
+          earliest_slots << day_hour
+          break
+        end
+      end
+    end
+    earliest_slots.compact
+  end
+
 protected
   def parse_date
     return unless self.requested_date_chronic
