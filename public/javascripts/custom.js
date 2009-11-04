@@ -6,10 +6,10 @@ $(document).ready(function() {
   Cufon.replace('h5');
   Cufon.replace('h6');
 
-  $(".date_confirm").text($("#date_picker li a.selected").text());
+  $("#appointment_requested_date").val($("#date_picker li a.selected").text());
 
   $("#date_picker li a").click(function() {
-    $(".date_confirm").text($(this).text());
+    $("#appointment_requested_date").val($(this).text());
     $("#date_picker li a.selected").removeClass("selected");
     $(this).addClass("selected");
     return false;
