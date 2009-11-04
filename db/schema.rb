@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091104163555) do
+ActiveRecord::Schema.define(:version => 20091104170107) do
 
   create_table "accounts", :force => true do |t|
     t.string   "title",      :null => false
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(:version => 20091104163555) do
     t.datetime "remember_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
