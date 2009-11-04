@@ -42,7 +42,7 @@
 
                     <div class="app_form">
                       <% f.inputs do %>
-                        <%= f.input :requested_date, :as => :string, :label => "Date" %>
+                        <%= f.input :requested_date, :as => :string, :label => "Date", :input_html => { :disabled => true} %>
                         <%= f.input :name %>
                         <%= f.input :phone %>
                         <%= f.input :email %>
@@ -54,7 +54,7 @@
             </div>
             <div class="break clearfix">
               <% f.buttons do %>
-                <%= f.commit_button %>
+                <%= f.commit_button :button_html => { :id => "submit", :value => "&nbsp;" } %>
               <% end %>
             </div>
           <% end %>
