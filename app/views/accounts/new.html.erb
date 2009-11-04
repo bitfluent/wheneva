@@ -1,0 +1,21 @@
+<div id="registration" class="container clearfix">
+  <div class="container_heading"><h2>Create Your Own Appointment System</h2></div>
+  <div class="container_content clearfix">
+    <div class="inner clearfix">
+      <% semantic_form_for @account do |f| %>
+        <% f.inputs do %>
+          <%= f.input :title %>
+          <%= f.input :subdomain, :label => "URL" %>
+          <%#= f.input :email %>
+          <%#= f.input :password %>
+          <!-- <li><label>Logo</label><input type="file" name="logo" name="logo" /></li>
+          <li><label>Assistant / Manager Email<abbr>*</abbr></label><input type="password" name="email2" name="email2" /></li> -->
+        <% end %>
+        <% f.buttons do %>
+          <%= f.commit_button :button_html => { :value => "Sign Up" } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container_bottom"></div>
+</div>
