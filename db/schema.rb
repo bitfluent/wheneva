@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(:version => 20091104080937) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.string   "description"
+    t.string   "brief"
     t.datetime "requested_date"
     t.datetime "confirmed_date"
-    t.boolean  "cancelled"
-    t.boolean  "rejected"
+    t.boolean  "cancelled",      :default => false
+    t.boolean  "rejected",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
