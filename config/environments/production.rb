@@ -27,13 +27,9 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 ActionMailer::Base.perform_deliveries = true
-ActionMailer::Base.delivery_method = :test
+ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  :domain           => "jomcode.com",
-  :user_name        => 'meet@jomcode.com',
-  :password         => '8872J8',
-  :address          => 'smtp.gmail.com',
-  :port             => 587,
-  :authentication   => :plain,
-  :enable_starttls_auto => true
+  :address => 'localhost',
+  :domain  => 'localhost',
+  :port      => 25
 }
