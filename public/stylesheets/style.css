@@ -51,6 +51,7 @@ h5 { font-size: 16px; }
 .align_right { text-align: right; }
 a#fb { padding: 3px 0 3px 22px; background: url(/images/fb.png) no-repeat 0 3px; margin: 0 0 0 15px; }
 a#tw { padding: 3px 0 3px 22px; background: url(/images/tw.png) no-repeat 0 3px; }
+a#bookmark { padding: 3px 0 3px 22px; background: url(/images/address-book.png) no-repeat 0 3px; }
 
 #app_submit { margin: 15px 0; }
 .step { float: left; width: 300px; padding: 15px 40px 15px 45px; position: relative; }
@@ -74,3 +75,20 @@ textarea { height: 130px; overflow: auto; }
 .break { background: url(/images/break.png) no-repeat top center; text-align: center; width: 760px; height: 34px; display: block; padding: 40px 0 0 0; }
 #submit { background: url(/images/submit.png) no-repeat bottom left; width: 209px; height: 30px; cursor: pointer; padding: 0; border: 0; }
 #submit:hover { background: url(/images/submit.png) no-repeat top left; }
+
+/*confirmation*/
+#confirmation .inner { padding-top: 15px; }
+#confirmation h4 a { padding: 2px 4px; text-decoration: none; }
+#confirmation h4 a.unconfirmed { background-color: #ff7; border-bottom: 1px solid #f67; color: #f60; }
+#confirmation h4 a.confirmed { background-color: #def5b2; border-bottom: 1px solid #71a60b; color: #71a60b; }
+#confirmation h4 a.rescheduled { background-color: #f187f8; border-bottom: 1px solid #a412ae; color: #a412ae; }
+#confirmation h4 a.cancelled { background-color: #ff9292; border-bottom: 1px solid #b00d0d; color: #b00d0d; }
+
+#confirmation .app_details { margin-top: 25px; }
+#confirmation .app_details h5 { border-bottom: 1px solid #ccc; }
+#confirmation .app_details .app_form { margin-top: 15px; }
+#confirmation .app_details .app_form p { width: 100%; }
+#confirmation .app_details .app_form p span { background-color: #f3f3f3; border: 1px solid #ccc; cursor: default; padding: 4px; }
+#confirmation .app_details .app_form p span.date_confirm { color: #434343; text-align: left; }
+a.action { padding: 2px 5px; text-decoration: none; color: #900; background-color: #FFA8A8; border-bottom: 1px solid #900; }
+a.action:hover { color: #fff; background-color: #900; }
