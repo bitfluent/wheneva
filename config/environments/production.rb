@@ -27,7 +27,7 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 ActionMailer::Base.perform_deliveries = true
-ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.smtp_settings = {
   :domain           => "jomcode.com",
   :user_name        => 'meet@jomcode.com',
