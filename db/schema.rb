@@ -9,16 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091104183911) do
+ActiveRecord::Schema.define(:version => 20091104213719) do
 
   create_table "accounts", :force => true do |t|
-    t.string   "title",        :null => false
-    t.string   "subdomain",    :null => false
+    t.string   "title",             :null => false
+    t.string   "subdomain",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",      :null => false
+    t.integer  "user_id",           :null => false
     t.string   "tagline"
     t.integer  "assistant_id"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "accounts", ["subdomain"], :name => "index_accounts_on_subdomain", :unique => true
@@ -48,10 +52,6 @@ ActiveRecord::Schema.define(:version => 20091104183911) do
     t.datetime "remember_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

@@ -4,3 +4,4 @@ tmp/**/*
 tmp/restart.txt
 config/database.yml
 db/*.sqlite3
+public/system/*
