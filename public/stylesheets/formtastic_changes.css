@@ -19,3 +19,4 @@ form.formtastic fieldset.buttons { padding: 0; }
 form.formtastic fieldset.buttons ol li { float: none; width: 100%;}
 form.formtastic fieldset.register ol li { float: none; width: 100%; margin-bottom: 5px; }
 form.formtastic fieldset ol li input.short { float: none; }
+#registration fieldset ol li input#free-registration { width: 253px; }

@@ -174,3 +174,5 @@ fieldset ol { padding: 0; margin: 0; list-style: none; }
 .app_boss ul li .time { background: url(/images/clock-frame.png) no-repeat 0 4px; }
 .app_boss ul li .app_desc { float: left; width: 645px; }
 .app_boss ul li .app_desc p { }
+
+#free-registration { background: url(/images/registration.png); width: 253px; height: 50px; display: block; margin: 0 auto; border: 0; padding: 0;}
