@@ -1,0 +1,16 @@
+Hello <%= @appointment.name %>,
+
+	Your meeting with <%= @account.title %> is <%= @appointment.state %>">
+
+	Details
+	<%= "Date: #{@appointment.appointment_date.to_s(:appointment_date)}" %>
+	<%= "Time: #{@appointment.appointment_date.to_formatted_s(:appointment_time)}" %>
+	<% unless @appointment.venue.nil? %>
+	<%= "Venue: #{@appointment.venue}" %>
+	<% end %>
+	<%= "Brief : #{@appointment.brief}" %>
+	
+	You can check the status here <%= appointment_url(@appointment, :subdomain => @account.subdomain)%>
+	
+Thanks!
+	

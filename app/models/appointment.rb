@@ -1,6 +1,8 @@
 class Appointment < ActiveRecord::Base
+  belongs_to :account
   before_save :parse_date
   after_save :set_conflict, :if => Proc.new {|a| !a.confirmed_date.nil? }, :unless => Proc.new {|a| a.conflicted? }
+  after_save :send_mail, :unless => Proc.new {|a| a.conflicted? }
   named_scope :between, lambda { |start, finish| { :conditions => ["confirmed_date >= ? AND confirmed_date <= ?", start, finish] } }
   named_scope :not_confirm, :conditions => {:confirmed_date => nil}
   named_scope :not_cancelled, :conditions => {:cancelled => false}
@@ -61,5 +63,9 @@ protected
     Appointment.all(:conditions => ["requested_date = ? AND account_id = ? ", self.confirmed_date, self.account_id]).each do |appointment|
       appointment.update_attribute('conflicted', true) if appointment.state == :unconfirmed
     end
+  end
+  
+  def send_mail
+    AppointmentMailer.deliver_mail(self)
   end
 end
