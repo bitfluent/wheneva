@@ -177,3 +177,5 @@ fieldset ol { padding: 0; margin: 0; list-style: none; }
 
 #free-registration { background: url(/images/registration.png); width: 253px; height: 50px; display: block; margin: 0 auto; border: 0; padding: 0;}
 #login { background: url(/images/login_button.png); width: 109px; height: 50px; display: block; border: 0; padding: 0;}
+
+.inner_top { padding-bottom: 10px; }
