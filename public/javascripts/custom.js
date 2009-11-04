@@ -6,10 +6,12 @@ $(document).ready(function() {
   Cufon.replace('h5');
   Cufon.replace('h6');
 
-  $("#appointment_requested_date").val($("#date_picker li a.selected").text());
+  $("#request_date_dummy").val($("#date_picker li a.selected").text());
+  $("#appointment_requested_date_chronic").val($("#date_picker li a.selected").text());
 
   $("#date_picker li a").click(function() {
-    $("#appointment_requested_date").val($(this).text());
+    $("#appointment_requested_date_chronic").val($(this).text());
+    $("#request_date_dummy").val($(this).text());
     $("#date_picker li a.selected").removeClass("selected");
     $(this).addClass("selected");
     return false;

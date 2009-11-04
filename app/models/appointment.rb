@@ -20,8 +20,17 @@ class Appointment < ActiveRecord::Base
   def appointment_date
     self.confirmed_date || self.requested_date
   end
+
+  def requested_date_chronic
+    @requested_date_chronic
+  end
+  
+  def requested_date_chronic=(requested_date)
+    @requested_date_chronic = requested_date
+  end
+  
 protected
   def parse_date
-    self.requested_date = Chronic.parse(self.requested_date)
+    self.requested_date = Chronic.parse(@requested_date_chronic)
   end
 end

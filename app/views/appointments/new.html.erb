@@ -41,8 +41,10 @@
                     <small>Your personal details and the brief of appointment.</small>
 
                     <div class="app_form">
+											
                       <% f.inputs do %>
-                        <%= f.input :requested_date, :as => :string, :label => "Date", :input_html => { :disabled => true} %>
+												<%= f.input :requested_date_chronic, :as => :hidden %>
+                        <%= f.input :requested_date, :as => :string, :label => "Date", :input_html => { :name => 'request_date_dummy', :id => 'request_date_dummy', :disabled => true} %>
                         <%= f.input :name %>
                         <%= f.input :phone %>
                         <%= f.input :email %>
