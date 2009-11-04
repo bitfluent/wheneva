@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
       admin.resources :appointments
     end
     account.devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+    account.connect "/admin", :controller => "admin/appointments", :action => "index"
     account.user_root '/admin/appointments', :controller => 'admin/appointments', :action => "index" # needed for devise to know where to redirect post-login
     account.root :controller => "appointments", :action => "new"
   end
