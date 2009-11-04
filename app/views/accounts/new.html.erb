@@ -5,7 +5,7 @@
     <div class="inner clearfix">
       <% semantic_form_for @account, :html => { :multipart => true } do |f| %>
         <% f.inputs do %>
-          <%= f.input :title %>
+          <%= f.input :title, :label => "Name" %>
           <%= f.input :tagline %>
           <%= f.input :subdomain, :label => "URL" %>
           <% f.semantic_fields_for :user_attributes do |u| %>
@@ -13,7 +13,10 @@
             <%= u.inputs :password, :as => :password %>
           <% end %>
           <%= f.input :logo, :as => :file %>
-          <!-- <li><label>Assistant / Manager Email<abbr>*</abbr></label><input type="password" name="email2" name="email2" /></li> -->
+          <% f.semantic_fields_for :assistant_attributes do |a| %>
+            <%= a.input :email, :label => "Assistant Email" %>
+            <%= a.input :password, :as => :hidden, :value => Haddock::Password.generate %>
+          <% end %>
         <% end %>
         <% f.buttons do %>
           <%= f.commit_button :button_html => { :value => "Sign Up" } %>

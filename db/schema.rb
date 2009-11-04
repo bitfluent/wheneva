@@ -9,15 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091104170107) do
+ActiveRecord::Schema.define(:version => 20091104180942) do
 
   create_table "accounts", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "subdomain",  :null => false
+    t.string   "title",        :null => false
+    t.string   "subdomain",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",    :null => false
+    t.integer  "user_id",      :null => false
     t.string   "tagline"
+    t.integer  "assistant_id"
   end
 
   add_index "accounts", ["subdomain"], :name => "index_accounts_on_subdomain", :unique => true
