@@ -17,7 +17,7 @@
           <%= f.input :logo, :as => :file %>
           <% f.semantic_fields_for :assistant_attributes do |a| %>
             <%= a.input :email, :label => "Assistant Email" %>
-            <%= a.input :password, :as => :hidden, :value => Haddock::Password.generate %>
+            <%= a.input :password, :as => :hidden, :value => 'changeme' %>
           <% end %>
         <% end %>
         <% f.buttons do %>
