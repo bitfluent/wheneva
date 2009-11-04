@@ -5,7 +5,7 @@
 	</div>
 	<div class="container_content clearfix">
 		<div class="left_col">
-		<% @appointments[0..1].each do |key, appointments| %>
+		<% Array(@appointments.slice(0..1)).compact.each do |key, appointments| %>
 			<div class="app">
 				<h4><span><%= appointments.first.appointment_date.to_formatted_s(:appointment_date_short) %></span><%= appointments.first.appointment_date.strftime('%A') %></h4>
 				<ul class="app_list">
@@ -26,7 +26,7 @@
 		<% end %>
 			<div class="app more">
         <h4>Upcoming Appointments</h4>
-				<% @appointments[2..6].each do |key, appointments| %>
+				<% Array(@appointments.slice(2..6)).compact.each do |key, appointments| %>
         <ul class="app_list">
         	<li>
 						<h3><%= appointments.first.appointment_date.strftime('%A') %></h3>
