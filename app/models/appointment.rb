@@ -31,6 +31,7 @@ class Appointment < ActiveRecord::Base
   
 protected
   def parse_date
-    self.requested_date = Chronic.parse(@requested_date_chronic)
+    return unless self.requested_date_chronic
+    self.requested_date = Chronic.parse(self.requested_date_chronic)
   end
 end

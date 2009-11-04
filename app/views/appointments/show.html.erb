@@ -1,5 +1,5 @@
 <div id="confirmation" class="container clearfix">
-	<div class="container_heading"><a href="#" id="bookmark" class="png_bg right">Boookmark this page</a><h2>Hello, Kailoon!</h2></div>
+	<div class="container_heading"><a href="#" id="bookmark" class="png_bg right jqbookmark">Boookmark this page</a><h2>Hello, Kailoon!</h2></div>
 	<div class="container_content clearfix">
 		<div class="inner clearfix">
 			<h4>Your meeting with Dato' Abu Bakar is <a href="" class="<%= @appointment.state %>"><%= @appointment.state %></a></h4>
@@ -13,8 +13,15 @@
 					<% end %>
 					<p><strong>Brief</strong><span><%= @appointment.brief %></span></p>
 				</div>
-       </div>
-       <p class="align_right"><a href="" class="cancel action">Cancel this meeting</a></p>
+			</div>
+			<% if !(@appointment.cancelled? || @appointment.rejected?) %>
+	      <% form_for @appointment do |f| %>
+					<%= f.hidden_field :cancelled, :value => true %>
+					<p class="align_right">
+						<a href="" class="cancel action">Cancel this meeting</a>
+					</p>
+				<% end %>
+			<% end %>				
    	</div>
 	</div>
 	<div class="container_bottom"></div>
