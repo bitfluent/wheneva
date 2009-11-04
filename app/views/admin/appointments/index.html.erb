@@ -11,7 +11,7 @@
 				<ul class="app_list">
 					<% appointments.each do |appointment| %>
          	<li>
-						<a href="#" target="_blank">
+						<a href="<%= admin_appointment_path(appointment)%>">
 							<h3><%= appointment.appointment_date.to_formatted_s(:appointment_time) %></h3>
 							<div class="desc">
 								<span class="confirm right"><%= appointment.state %></span>
@@ -34,7 +34,7 @@
 							<ul class="child">
 								<% appointments.each do |appointment| %>
                 <li>
-									<a href="#" target="_blank">
+									<a href="<%= admin_appointment_path(appointment) %>">
                 <span class="confirm right"><%= appointment.state %></span>
                 <h5><strong><%= appointment.appointment_date.to_formatted_s(:appointment_time) %></strong><%= appointment %></h5>
                 </a>
