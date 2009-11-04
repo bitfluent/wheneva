@@ -1,0 +1,88 @@
+<div id="dashboard" class="container clearfix">
+	<div class="container_heading">
+		<h2>Agenda</h2>
+	</div>
+	<div class="container_content clearfix">
+		<div class="left_col">
+			<div class="app">
+				<h4><span>4th Nov 2009</span>Today</h4>
+				<ul class="app_list">
+					<% @appointments.each do |appointment| %>
+         	<li>
+						<a href="#" target="_blank">
+							<h3><%= appointment.appointment_date.to_formatted_s(:appointment_time) %></h3>
+							<div class="desc">
+								<span class="confirm right"><%= appointment.state %></span>
+								<h3><%= appointment.name %></h3>
+							</div>
+							<p class="left"><%= appointment.brief %></p>
+						</a>
+					</li>
+					<% end %>
+ 				</ul>
+			</div>
+			<div class="app more">
+        <h4>Upcoming Appointments</h4>
+        <ul class="app_list">
+        	<li>
+						<h3>Thu</h3>
+						<div class="desc clearfix">
+							<ul class="child">
+                <li><a href="#" target="_blank">
+                <span class="confirm right">Confirmed</span>
+                <h5><strong>9 am</strong>kailoon</h5>
+                </a>
+                </li>
+                <li><a href="#" target="_blank">
+                <span class="confirm right">Confirmed</span>
+                <h5><strong>11 am</strong>kailoon</h5>
+                </a>
+                </li>
+                <li><a href="#" target="_blank">
+                <span class="confirm right">Confirmed</span>
+                <h5><strong>4 pm</strong>kailoon</h5>
+                </a>
+							</li>
+						</ul>
+					</div>
+				</li>
+        	<li>
+						<h3>Thu</h3>
+						<div class="desc clearfix">
+							<ul class="child">
+                <li><a href="#" target="_blank">
+                <span class="confirm right">Confirmed</span>
+                <h5><strong>9 am</strong>kailoon</h5>
+                </a>
+                </li>
+                <li><a href="#" target="_blank">
+                <span class="confirm right">Confirmed</span>
+                <h5><strong>11 am</strong>kailoon</h5>
+                </a>
+                </li>
+                <li><a href="#" target="_blank">
+                <span class="confirm right">Confirmed</span>
+                <h5><strong>4 pm</strong>kailoon</h5>
+                </a>
+							</li>
+						</ul>
+					</div>
+				</li>				
+			</ul>
+		</div>
+	</div>
+	<div class="right_col">
+		<div class="pending_box">
+			<div class="inner">
+				<h4>Pending Requests</h4>
+				<ul class="clearfix">
+					<% @pendings.each do |appointment|%>
+						<li><%= link_to "<strong>#{appointment.appointment_date.to_formatted_s(:appointment_date_short)}</strong><em>#{appointment}</em><span>#{appointment.appointment_date.to_formatted_s(:appointment_time)}</span>", appointment_path(appointment) %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container_bottom"></div>
+</div>

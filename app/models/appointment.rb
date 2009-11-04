@@ -1,6 +1,14 @@
 class Appointment < ActiveRecord::Base
   before_save :parse_date
-
+  named_scope :between, lambda { |start, finish| { :conditions => ["confirmed_date >= ? AND confirmed_date <= ?", start, finish] } }
+  named_scope :not_confirm, :conditions => {:confirmed_date => nil}
+  named_scope :not_cancelled, :conditions => {:cancelled => false}
+  named_scope :not_rejected, :conditions => {:rejected => false}  
+  
+  def to_s
+    name
+  end
+  
   def state
     if self.cancelled?
       :cancelled
@@ -31,6 +39,15 @@ class Appointment < ActiveRecord::Base
   
   def page_title
     "#{self.name} has a meeting at #{self.appointment_date.to_s(:appointment_date)}"
+  end
+  
+  def self.weekly_appointments(week)
+    date = (Time.zone.today.cweek - week).week.from_now
+    between(date.beginning_of_week, date.end_of_week).all(:order => 'confirmed_date ASC')
+  end
+  
+  def self.pendings
+    not_confirm.not_cancelled.not_rejected
   end
   
 protected

@@ -111,17 +111,32 @@ fieldset ol { padding: 0; margin: 0; list-style: none; }
 .app h4 span { float: right; font-size: 14px; margin-top: 6px; }
 .app_list { padding: 0; margin: 0; list-style: none; }
 .left_col { float: left; width: 500px; display: inline; }
-.right_col { float: left; width: 300px; display: inline; }
+.right_col { float: left; width: 280px; display: inline; padding-top: 15px; }
 .app { padding: 15px 10px 0; margin-bottom: 15px; float: left; width: 460px;}
 .app h4 { border-bottom: 3px solid #f1f1f1; }
-.app a h3 { float: left; width: 80px; padding: 0; text-align: right; font-size: 22px; }
-.app a .desc h3 { width: auto; text-align: left; }
+.app h3 { float: left; width: 80px; padding: 0; text-align: right; font-size: 22px; }
+.more h3 { text-align: center; padding-top: 10px; }
+.app .desc h3 { width: auto; text-align: left; }
 .app a { color: #666; }
-.app a .desc { float: left; width: 360px; line-height: 16px; padding-left: 20px; }
+.app .desc { float: left; width: 360px; line-height: 16px; padding-left: 20px; }
 .app a p { padding: 10px; width: 440px; }
 .app ul { border-top: 1px solid #ccc; }
 .app ul li { float: left; width: 460px; padding: 7px 0; border-bottom: 1px solid #f1f1f1; }
+.more ul li { padding-top: 0; }
 .app span.confirm { background: url(/images/tick.png) no-repeat 0 3px; padding: 3px 0 3px 18px; color: #999; margin-right: 10px; display: inline; }
 .app span.pending { background: url(/images/clipboard-task.png) no-repeat 0 3px; padding: 3px 0 3px 18px; color: #999; margin-right: 10px; display: inline; }
 .app ul li.pending_list { background-color: #f7f7f7; padding: 4px 0; }
-.app ul li.pending_list h3 { font-size: 17px; color: #666; }
+.app ul li.pending_list h3, .app ul li.pending_list h5{ font-size: 17px; color: #666; }
+.app ul li h5 { font-size: 17px; }
+.app ul li ul.child { list-style: none; float: left; width: 360px; display: inline; border: 0; border-left: 1px solid #f1f1f1; }
+.app ul li ul.child li { width: 350px; padding: 3px 0 3px 10px; border-bottom: 1px solid #f1f1f1;  }
+.app ul li ul.child li h5 { padding: 0; }
+.app ul li ul.child li h5 strong { float: left; display: inline; width: 70px; text-align: right; margin-right: 10px; }
+
+.pending_box { padding: 1px; border: 1px solid #ccc; }
+.pending_box .inner { padding: 10px; background-color: #f5f5f5; }
+.pending_box .inner ul { list-style: none; background-color: #fff; }
+.pending_box .inner ul li { border-bottom: 1px solid #fff; float: left; width: 246px; font-size: 11px; }
+.pending_box .inner ul li a strong { float: left; width: 70px; background-color: #222;padding: 3px 5px; color: #fff;}
+.pending_box .inner ul li em { float: left; width: 60px; padding: 3px 5px; font-style: normal; }
+.pending_box .inner ul li span { float: left; width: 92px; padding: 3px 0; }
