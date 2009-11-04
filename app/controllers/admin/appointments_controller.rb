@@ -1,4 +1,5 @@
 class Admin::AppointmentsController < InheritedResources::Base
+  before_filter :authenticate_user!
   before_filter :get_week, :only => :index
 
   def index
