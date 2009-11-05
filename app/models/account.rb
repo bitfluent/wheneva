@@ -1,4 +1,5 @@
 class Account < ActiveRecord::Base
+  validates_presence_of :title, :subdomain, :tagline, :on => :create, :message => "can't be blank"
   has_many :appointments
   has_many :agendas, :class_name => "Appointment"
   belongs_to :user
