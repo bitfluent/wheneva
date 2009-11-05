@@ -9,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
     account.devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
     account.connect "/admin", :controller => "admin/appointments", :action => "index"
     account.user_root '/admin/appointments', :controller => 'admin/appointments', :action => "index" # needed for devise to know where to redirect post-login
+    account.settings "/admin/settings", :controller => "admin/settings", :action => "edit", :conditions => { :method => :get } 
+    account.settings "/admin/settings", :controller => "admin/settings", :action => "update", :conditions => { :method => :put }
+    account.connect "/accounts/check", :controller => "accounts", :action => "check"
     account.root :controller => "appointments", :action => "new"
   end
 
