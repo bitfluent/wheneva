@@ -1,5 +1,6 @@
 class Admin::SettingsController < ApplicationController
   include ApplicationHelper
+  before_filter :authenticate_user!
 
   def update
     begin
