@@ -5,8 +5,8 @@
 		<div class="inner clearfix">
 		<% form_for @appointment, :url => admin_appointment_path(@appointment) do |f| %>
 			<%= f.hidden_field :cancelled %>
-			<%= f.hidden_field :confirmed_date %>
-			<%= f.hidden_field :requested_date %>
+			<%= f.hidden_field :confirmed_date, :value => @appointment.confirmed_date.to_s(:rfc822) %>
+			<%= f.hidden_field :requested_date, :value => @appointment.requested_date.to_s(:rfc822) %>
 			<%= f.hidden_field :rejected %>
 			<%= f.hidden_field :confirmed_date_chronic %>
 			<div class="app_details clearfix">

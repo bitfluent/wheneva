@@ -92,12 +92,12 @@ class Appointment < ActiveRecord::Base
 
 protected
   def parse_requested_date
-    return unless self.requested_date_chronic
+    return if self.requested_date_chronic.blank?
     self.requested_date ||= Chronic.parse(self.requested_date_chronic)
   end
   
   def parse_confirmed_date
-    return unless self.confirmed_date_chronic
+    return if self.confirmed_date_chronic.blank?
     self.confirmed_date ||= Chronic.parse(self.confirmed_date_chronic)
   end
   
