@@ -179,3 +179,5 @@ fieldset ol { padding: 0; margin: 0; list-style: none; }
 #login { background: url(/images/login_button.png); width: 109px; height: 50px; display: block; border: 0; padding: 0;}
 
 .inner_top { padding-bottom: 10px; }
+.conflict { background-color: #fc9; }
+.pending_box .inner ul li.conflict a strong { background-color: #c00; }
