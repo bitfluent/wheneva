@@ -1,27 +1,27 @@
 <% title @appointment.page_title %>
 <div id="confirmation" class="container clearfix">
-	<div class="container_heading"><h2><%= "Meeting with #{@appointment.name}" %> is  <a href="" class="<%= @appointment.state %>"><%= @appointment.state %></a></h2></div>
+	<div class="container_heading"><h2><%=h "Meeting with #{@appointment.name}" %> is  <a href="" class="<%= @appointment.state %>"><%= @appointment.state %></a></h2></div>
 	<div class="container_content clearfix">
 		<div class="inner clearfix">
 		<% form_for @appointment, :url => admin_appointment_path(@appointment) do |f| %>
 			<%= f.hidden_field :cancelled %>
 			<%= f.hidden_field :confirmed_date %>
 			<%= f.hidden_field :requested_date %>
-			<%= f.hidden_field :rejected %>						
-			<%= f.hidden_field :confirmed_date_chronic %>						
+			<%= f.hidden_field :rejected %>
+			<%= f.hidden_field :confirmed_date_chronic %>
 			<div class="app_details clearfix">
        	<h5>Details</h5>
 				<div class="app_form clearfix">
-					<p><strong>Name</strong><span><%= @appointment.name %></span></p>					
-					<p><strong>Phone</strong><span><%= @appointment.phone %></span></p>					
-					<p><strong>Email</strong><span><%= @appointment.email %></span></p>										
+					<p><strong>Name</strong><span><%=h @appointment.name %></span></p>
+					<p><strong>Phone</strong><span><%=h @appointment.phone %></span></p>
+					<p><strong>Email</strong><span><%= link_to h(@appointment.email), "mailto:#{h(@appointment.email)}" %></span></p>
 					<p><strong>Date</strong><span class="date_confirm"><%= @appointment.appointment_date.to_s(:appointment_date) %></span></p>
 					<p><strong>Time</strong><span><%= @appointment.appointment_date.to_formatted_s(:appointment_time) %></span></p>
-					<p><strong>Brief</strong><span><%= @appointment.brief %></span></p>
+					<p><strong>Brief</strong><span><%=h @appointment.brief %></span></p>
 					<p><strong>Venue</strong><span><%= f.text_field :venue %></span></p>
 				</div>
 				<% if (@appointment.state == :unconfirmed )%>
-					<h4>Pick a date &amp; time to rescheduled</h4>
+					<h4>Pick a date &amp; time to reschedule</h4>
 					<%= render :partial => "shared/date_picker" %>
 				<% end %>
 			</div>
@@ -35,12 +35,12 @@
 				</p>
 				<p class="align_right">
 					<a href="#" class="cancel action">Reschedule</a>
-				</p>			
+				</p>
 				<p class="align_right">
 					<a href="#" class="cancel action appointment_rejected">Reject</a>
 				</p>
 				<% end %>
-			<% end %>				
+			<% end %>
    	</div>
 	</div>
 	<div class="container_bottom"></div>
