@@ -1,64 +1,64 @@
 <% title "Agenda" %>
 <div id="dashboard" class="container clearfix">
-	<div class="container_heading">
-		<h2>Agenda</h2>
-	</div>
-	<div class="container_content clearfix">
-		<div class="left_col">
-		<% Array(@appointments.slice(0..1)).compact.each do |key, appointments| %>
-			<div class="app">
-				<h4><span><%= appointments.first.appointment_date.to_formatted_s(:appointment_date_short) %></span><%= appointments.first.appointment_date.strftime('%A') %></h4>
-				<ul class="app_list">
-					<% appointments.each do |appointment| %>
-         	<li>
-						<a href="<%= admin_appointment_path(appointment)%>">
-							<h3><%= appointment.appointment_date.to_formatted_s(:appointment_time) %></h3>
-							<div class="desc">
-								<span class="confirm right"><%= appointment.state %></span>
-								<h3><%= appointment.name %></h3>
-							</div>
-							<p class="left"><%= appointment.brief %></p>
-						</a>
-					</li>
-					<% end %>
- 				</ul>
-			</div>
-		<% end %>
-			<div class="app more">
-        <h4>Upcoming Appointments</h4>
-				<% Array(@appointments.slice(2..6)).compact.each do |key, appointments| %>
+  <div class="container_heading">
+    <h2>Agenda</h2>
+  </div>
+  <div class="container_content clearfix">
+    <div class="left_col">
+    <% Array(@appointments.slice(0..1)).compact.each do |key, appointments| %>
+      <div class="app">
+        <h4><span><%= appointments.first.appointment_date.to_formatted_s(:appointment_date_short) %></span><%= appointments.first.appointment_date.strftime('%A') %></h4>
         <ul class="app_list">
-        	<li>
-						<h3><%= appointments.first.appointment_date.strftime('%A') %></h3>
-						<div class="desc clearfix">
-							<ul class="child">
-								<% appointments.each do |appointment| %>
-                <li>
-									<a href="<%= admin_appointment_path(appointment) %>">
+          <% appointments.each do |appointment| %>
+          <li>
+            <a href="<%= admin_appointment_path(appointment)%>">
+              <h3><%= appointment.appointment_date.to_formatted_s(:appointment_time) %></h3>
+              <div class="desc">
                 <span class="confirm right"><%= appointment.state %></span>
-                <h5><strong><%= appointment.appointment_date.to_formatted_s(:appointment_time) %></strong><%= appointment %></h5>
+                <h3><%=h appointment.name %></h3>
+              </div>
+              <p class="left"><%=h appointment.brief %></p>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+      <div class="app more">
+        <h4>Upcoming Appointments</h4>
+        <% Array(@appointments.slice(2..6)).compact.each do |key, appointments| %>
+        <ul class="app_list">
+          <li>
+            <h3><%= appointments.first.appointment_date.strftime('%A') %></h3>
+            <div class="desc clearfix">
+              <ul class="child">
+                <% appointments.each do |appointment| %>
+                <li>
+                  <a href="<%= admin_appointment_path(appointment) %>">
+                <span class="confirm right"><%= appointment.state %></span>
+                <h5><strong><%= appointment.appointment_date.to_formatted_s(:appointment_time) %></strong><%=h appointment %></h5>
                 </a>
                 </li>
                 <% end %>
-						</ul>
-					</div>
-				</li>
-				<% end %>
-			</ul>
-		</div>
-	</div>
-	<div class="right_col">
-		<div class="pending_box">
-			<div class="inner">
-				<h4>Pending Requests</h4>
-				<ul class="clearfix">
-					<% @pendings.each do |appointment|%>
-						<li><%= link_to "<strong>#{appointment.appointment_date.to_formatted_s(:appointment_date_short)}</strong><em>#{appointment}</em><span>#{appointment.appointment_date.to_formatted_s(:appointment_time)}</span>", admin_appointment_path(appointment) , :class => (appointment.conflicted? ? 'conflicted' : '')%></li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	</div>
+            </ul>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="right_col">
+    <div class="pending_box">
+      <div class="inner">
+        <h4>Pending Requests</h4>
+        <ul class="clearfix">
+          <% @pendings.each do |appointment|%>
+            <li><%= link_to "<strong>#{appointment.appointment_date.to_formatted_s(:appointment_date_short)}</strong><em>#{appointment}</em><span>#{appointment.appointment_date.to_formatted_s(:appointment_time)}</span>", admin_appointment_path(appointment) , :class => (appointment.conflicted? ? 'conflicted' : '')%></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="container_bottom"></div>
 </div>

@@ -12,12 +12,12 @@
           <div class="app_left">
             <h3 class="time"><%= appointment.appointment_date.to_formatted_s(:appointment_time) %></h3>
 						<% unless appointment.venue.nil? %>						
-            <span class="venue"><%= appointment.venue %></span>
+            <span class="venue"><%=h appointment.venue %></span>
 						<% end %>
           </div>
           <div class="app_desc">
-            <h3 class="visitor"><%= appointment %></h3>
-            <p><%= appointment.brief %></p>
+            <h3 class="visitor"><%=h appointment %></h3>
+            <p><%=h appointment.brief %></p>
           </div>
           <div class="app_visitor">
             
