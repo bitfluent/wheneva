@@ -1,6 +1,6 @@
 <% title @appointment.page_title %>
 <div id="confirmation" class="container clearfix">
-	<div class="container_heading"><h2><%=h "Meeting with #{@appointment.name}" %> is  <a href="" class="<%= @appointment.state %>"><%= @appointment.state %></a></h2></div>
+	<div class="container_heading"><h2><%=h "Meeting with #{@appointment.name}" %> is  <a href="" class="<%= @appointment.state %>"><%= @appointment.conflicted? ? 'conflicted with a confirmed meeting' : @appointment.state %></a></h2></div>
 	<div class="container_content clearfix">
 		<div class="inner clearfix">
 		<% form_for @appointment, :url => admin_appointment_path(@appointment) do |f| %>
@@ -30,9 +30,11 @@
 					<a href="#" class="cancel action appointment_cancelled">Cancel this meeting</a>
 				</p>
 			<% elsif (@appointment.state == :unconfirmed )%>
-				<p class="align_right">
-					<a href="#" class="cancel action nosubmit appointment_confirmed_date">Confirm</a>
-				</p>
+				<% unless @appointment.conflicted? %>
+					<p class="align_right">
+						<a href="#" class="cancel action nosubmit appointment_confirmed_date">Confirm</a>
+					</p>
+				<% end %>
 				<p class="align_right">
 					<a href="#" class="cancel action">Reschedule</a>
 				</p>
