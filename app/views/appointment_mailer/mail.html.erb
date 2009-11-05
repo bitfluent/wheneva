@@ -10,7 +10,7 @@ Hello <%= @appointment.name %>,
 	<% end %>
 	<%= "Brief : #{@appointment.brief}" %>
 	
-	You can check the status here <%= appointment_url(@appointment, :subdomain => @account.subdomain)%>
+	You can check the status here <%= appointment_url(@appointment, :subdomain => @account.subdomain, :token => @appointment.token)%>
 	
 Thanks!
 	

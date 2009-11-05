@@ -1,22 +1,22 @@
-<% title @appointment.page_title %>
+<% title resource.page_title %>
 <div id="confirmation" class="container clearfix">
-	<div class="container_heading"><a href="#" id="bookmark" class="png_bg right jqbookmark">Bookmark this page</a><h2><%=h "Hello, #{@appointment.name}!" %></h2></div>
+	<div class="container_heading"><a href="#" id="bookmark" class="png_bg right jqbookmark">Bookmark this page</a><h2><%=h "Hello, #{resource.name}!" %></h2></div>
 	<div class="container_content clearfix">
 		<div class="inner clearfix">
-			<h4>Your meeting with <%=h current_account.title %> is <span class="<%= @appointment.state %>"><%= @appointment.state %></span></h4>
+			<h4>Your meeting with <%=h current_account.title %> is <span class="<%= resource.state %>"><%= resource.state %></span></h4>
 			<div class="app_details clearfix">
        	<h5>Details</h5>
 				<div class="app_form clearfix">
-					<p><strong>Date</strong><span class="date_confirm"><%= @appointment.appointment_date.to_s(:appointment_date) %></span></p>
-					<p><strong>Time</strong><span><%= @appointment.appointment_date.to_formatted_s(:appointment_time) %></span></p>
-					<% unless @appointment.venue.nil? %>
-						<p><strong>Venue</strong><span><%=h @appointment.venue %></span></p>
+					<p><strong>Date</strong><span class="date_confirm"><%= resource.appointment_date.to_s(:appointment_date) %></span></p>
+					<p><strong>Time</strong><span><%= resource.appointment_date.to_formatted_s(:appointment_time) %></span></p>
+					<% unless resource.venue.nil? %>
+						<p><strong>Venue</strong><span><%=h resource.venue %></span></p>
 					<% end %>
-					<p><strong>Brief</strong><span><%=h @appointment.brief %></span></p>
+					<p><strong>Brief</strong><span><%=h resource.brief %></span></p>
 				</div>
 			</div>
-			<% if !(@appointment.cancelled? || @appointment.rejected?) %>
-	      <% form_for @appointment do |f| %>
+			<% if !(resource.cancelled? || resource.rejected?) %>
+	      <% form_for resource do |f| %>
 					<%= f.hidden_field :cancelled, :value => true %>
 					<p class="align_right">
 						<a href="" class="cancel action">Cancel this meeting</a>
