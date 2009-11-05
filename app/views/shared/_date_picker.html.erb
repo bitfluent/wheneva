@@ -1,7 +1,7 @@
 <small>Click on the date to select</small>
 <div id="date_picker">
 <ul>
-  <% Appointment.open_time_slots.each_with_index do |slot, i| %>
+  <% current_account.appointments.open_time_slots.each_with_index do |slot, i| %>
     <li><a href="#" class="<%= "selected" if i == 0 %> png_bg"><%= slot.to_s(:slot) %></a></li>
   <% end %>
 </ul>
