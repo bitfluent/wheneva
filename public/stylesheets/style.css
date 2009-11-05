@@ -139,7 +139,7 @@ fieldset ol { padding: 0; margin: 0; list-style: none; }
 .pending_box { padding: 1px; border: 1px solid #ccc; }
 .pending_box .inner { padding: 10px; background-color: #f5f5f5; }
 .pending_box .inner ul { list-style: none; background-color: #fff; }
-.pending_box .inner ul li { border-bottom: 1px solid #fff; float: left; width: 246px; font-size: 11px; }
+.pending_box .inner ul li { border-bottom: 1px solid #fff; float: left; width: 256px; font-size: 11px; }
 .pending_box .inner ul li a strong { float: left; width: 70px; background-color: #222;padding: 3px 5px; color: #fff;}
 .pending_box .inner ul li em { float: left; width: 60px; padding: 3px 5px; font-style: normal; }
 .pending_box .inner ul li span { float: left; width: 92px; padding: 3px 0; }
