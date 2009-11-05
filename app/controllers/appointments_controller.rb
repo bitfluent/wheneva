@@ -10,7 +10,7 @@ class AppointmentsController < InheritedResources::Base
     @appointment = current_account.appointments.build(params[:appointment])
     @appointment.token = UUIDTools::UUID.random_create.to_s
     create! do |success, failure|
-      success.html { appointment_url(@appointment, :token => @appointment.token) }
+      success.html { redirect_to appointment_url(@appointment, :token => @appointment.token) }
       failure.html { render :action => "new" }
     end
   end
