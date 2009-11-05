@@ -9,7 +9,10 @@ class AppointmentsController < InheritedResources::Base
   def create
     @appointment = current_account.appointments.build(params[:appointment])
     @appointment.token = UUIDTools::UUID.random_create.to_s
-    create! { appointment_url(@appointment, :token => @appointment.token) }
+    create! do |success, failure|
+      success { appointment_url(@appointment, :token => @appointment.token) }
+      failure { render :action => "new" }
+    end
   end
 protected
   def begin_of_association_chain
