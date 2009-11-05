@@ -2,6 +2,10 @@ class AppointmentsController < InheritedResources::Base
   include ApplicationHelper
   before_filter :redirect_to_admin
 
+  def index
+    redirect_to root_url
+  end
+
   def create
     @appointment = current_account.appointments.build(params[:appointment])
     @appointment.token = UUIDTools::UUID.random_create.to_s
