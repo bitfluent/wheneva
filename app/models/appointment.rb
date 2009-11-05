@@ -42,8 +42,8 @@ class Appointment < ActiveRecord::Base
     @confirmed_date_chronic
   end
   
-  def confirmed_date_chronic=(confirmed_date)
-    @confirmed_date_chronic = confirmed_date
+  def confirmed_date_chronic=(date)
+    @confirmed_date_chronic = date
   end
 
   def requested_date_chronic
@@ -92,12 +92,12 @@ class Appointment < ActiveRecord::Base
 protected
   def parse_requested_date
     return unless self.requested_date_chronic
-    self.requested_date = Chronic.parse(self.requested_date_chronic)
+    self.requested_date ||= Chronic.parse(self.requested_date_chronic)
   end
   
   def parse_confirmed_date
     return unless self.confirmed_date_chronic
-    self.confirmed_date = Chronic.parse(self.confirmed_date_chronic)
+    self.confirmed_date ||= Chronic.parse(self.confirmed_date_chronic)
   end
   
   def set_conflict

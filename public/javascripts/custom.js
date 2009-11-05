@@ -31,6 +31,8 @@ $(document).ready(function() {
 	});
 	$(".appointment_confirmed_date").click(function() {
 		$("#appointment_confirmed_date").val($("#appointment_requested_date").val());
+		$("#appointment_confirmed_date_chronic").val('');
+		$(this).parents('form').submit();
 	});
 	
 	// Generic link submit (.action)
