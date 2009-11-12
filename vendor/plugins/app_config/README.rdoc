@@ -1,0 +1,89 @@
+== Summary
+Application level configuration.
+
+== Features
+
+ * simple YAML config files
+ * config files support ERB
+ * config files support inheritance
+ * access config information via convenient object member notation
+
+=== Basic Usage
+
+You simply write a configuration file in YAML.  Notice you can use ERB.
+
+<em>config.yml</em>
+  aws:
+    access_key: 123ABC
+    secret_key: ABC123
+  now: <%= Time.now %>
+  servers: [ {name: example1.com}, {name: example2.com} ]
+
+Then somewhere in your code, you create a global constant from the config file.  Then access the config data via object member notation.
+
+_code_
+  ::AppConfig = ApplicationConfiguration.new("config.yml")
+  AppConfig.aws.access_key  # => "123ABC"
+  AppConfig.aws.secret_key  # => "ABC123"
+  AppConfig.now             # => Tue May 05 21:55:15 -0500 2009
+  AppConfig.servers[0].name # => "example1.com"
+
+=== Inheritance
+
+You can have a second config file that is recursively merged with the first config file.
+
+<em>base.yml</em>
+  app_name:  MyCoolApp
+  domain:  dev.mycoolapp.com
+
+<em>production.yml</em>
+  domain:  www.mycoolapp.com
+
+_code_
+  ::AppConfig = ApplicationConfiguration.new("base.yml", "production.yml")
+  AppConfig.app_name # => "MyCoolApp"
+  AppConfig.domain   # => "www.mycoolapp.com"
+
+=== Using in a Rails app
+
+You just need to create an initializer that looks something like this.
+
+ require 'app_config'
+ ::AppConfig = ApplicationConfiguration.new(RAILS_ROOT+"/config/app_config.yml",
+                                            RAILS_ROOT+"/config/environments/#{RAILS_ENV}.yml")
+
+If you installed this as a Rails plugin instead of a gem, that code is already run for you in
+the plugin's init.rb.
+
+=== Environments
+
+Alternatively to splitting out your environments into separate files, you can just have a single file which defines
+the application configuration for all environments (much like how databases.yml works).  Note if you do this, nested
+configurations will not be recursively merged.  See example below.
+
+<em>app_config.yml</em>
+  defaults: &defaults
+    one: won
+    two: too
+    nested:
+      foo: foo
+      bar: bar
+  
+  development:
+    <<: *defaults
+    two: new
+    nested:
+      foo: bar
+
+_code_
+  RAILS_ENV # => "development"
+  ::AppConfig = ApplicationConfiguration.new("app_config.yml")
+  AppConfig.use_environment!(RAILS_ENV)
+  AppConfig.one # => "won"
+  AppConfig.two # => "new"
+  AppConfig.nested.foo # => "bar"
+  AppConfig.nested.bar # raises NoMethodError because nested configurations are not recursively merged
+
+
+== Author
+Christopher J. Bottaro
