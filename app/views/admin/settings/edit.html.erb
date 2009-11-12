@@ -14,19 +14,6 @@
             <%= u.inputs :email %>
             <%= u.inputs :password, :as => :password %>
           <% end %>
-          <% if current_account.logo? %>
-            <li class="logo file" id="account_user_attributes_password_input">
-              <label for="account_user_attributes_password">Logo<abbr title="required">*</abbr></label>
-              <input id="account_logo" name="account[logo]" size="30" type="file" />
-              <div class="clear"></div>
-            </li>
-            <li>
-              <label for=""><abbr title="required"></abbr></label>
-              <%= image_tag current_account.logo.url(:thumb), :alt => current_account.title %>
-            </li>
-          <% else %>
-            <%= f.input :logo, :as => :file %>
-          <% end %>
         <% end %>
         <% f.buttons do %>
           <%= f.commit_button "Save" %>
