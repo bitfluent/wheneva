@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  # scoped urls - http://morib.meet.me/appointments/new
-  map.with_options :conditions => { :subdomain => /./ } do |account|
+  # scoped urls - http://morib.wheneva.com/appointments/new
+  map.with_options :conditions => { :subdomain => true } do |account|
     account.resources :appointments
     account.resources :agendas
     account.namespace :admin do |admin|
@@ -15,9 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     account.root :controller => "appointments", :action => "new"
   end
 
-  # top-level urls - http://meet.me/accounts/new
-  map.with_options :conditions => { :subdomain => false } do |meetme|
-    meetme.resources :accounts, :collection => { :check => :get }
-    meetme.root :controller => "home", :action => "show"
-  end
+  # top-level urls - http://wheneva.com/accounts/new
+  map.resources :accounts, :collection => { :check => :get }
+  map.root :controller => "home", :action => "show"
 end
