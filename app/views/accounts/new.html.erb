@@ -3,7 +3,7 @@
   <div class="container_heading"><h2>Create Your Own Appointment System</h2></div>
   <div class="container_content clearfix">
     <div class="inner clearfix">
-      <% semantic_form_for @account do |f| %>
+      <% semantic_form_for @account, :html => { :multipart => true } do |f| %>
         <% f.inputs :class => "register" do %>
           <%= f.input :title, :label => "Name" %>
           <%= f.input :tagline %>
@@ -14,6 +14,7 @@
             <%= u.inputs :email %>
             <%= u.inputs :password, :as => :password %>
           <% end %>
+          <%= f.input :logo, :as => :file %>
           <% f.semantic_fields_for :assistant_attributes do |a| %>
             <%= a.input :email, :label => "Assistant Email" %>
             <%= a.input :password, :as => :hidden, :value => 'changeme' %>
