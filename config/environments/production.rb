@@ -27,9 +27,4 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 ActionMailer::Base.perform_deliveries = true
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-  :address => 'localhost',
-  :domain  => 'localhost',
-  :port      => 25
-}
+ActionMailer::Base.delivery_method = :sendmail
