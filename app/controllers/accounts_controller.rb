@@ -1,5 +1,6 @@
 class AccountsController < InheritedResources::Base
   layout "home"
+  actions :new, :create
 
   def create
     create! { new_user_session_url(:subdomain => @account.subdomain) }
