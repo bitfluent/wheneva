@@ -5,6 +5,8 @@ class Appointment < ActiveRecord::Base
   after_save :set_conflict, :if => Proc.new {|a| !a.confirmed_date.nil? }, :unless => Proc.new {|a| a.conflicted? }
   after_save :send_mail, :unless => Proc.new {|a| a.conflicted? }
   validates_presence_of :name, :email, :phone, :brief, :on => :create, :message => "can't be blank"
+  validate :no_conflict, :on => :update
+
   named_scope :between, lambda { |start, finish| { :conditions => ["confirmed_date >= ? AND confirmed_date <= ?", start, finish] } }
   named_scope :not_confirm, :conditions => {:confirmed_date => nil}
   named_scope :not_cancelled, :conditions => {:cancelled => false}
@@ -105,6 +107,10 @@ protected
     Appointment.all(:conditions => ["requested_date = ? AND account_id = ? ", self.confirmed_date, self.account_id]).each do |appointment|
       appointment.update_attribute('conflicted', true) if appointment.state == :unconfirmed
     end
+  end
+  
+  def no_conflict
+    errors.add_to_base("Conflicted with a confirmed meeting, please reschedule") if self.conflicted?
   end
   
   def send_mail

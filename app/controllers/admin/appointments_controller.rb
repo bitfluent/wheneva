@@ -8,6 +8,12 @@ class Admin::AppointmentsController < InheritedResources::Base
     index!
   end
   
+  def update
+    update! do |success, failure|
+      failure.html { redirect_to admin_appointment_url(@appointment) }
+    end
+  end
+  
 protected
   def get_week
     @week = params[:week] || Time.zone.today.cweek
